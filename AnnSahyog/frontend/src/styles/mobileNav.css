@@ -1,0 +1,160 @@
+/* ======================================================
+   PERSISTENT SIDEBAR ON SMALL SCREENS
+   The left sidebar stays visible on phones and tablets, the
+   same as on desktop. Below 900px it becomes a compact icon
+   rail (about 76px wide): logo at the top, icon links with
+   accessible names, and logout at the bottom. Labels are
+   hidden only because the width is limited; each link keeps
+   its name for screen readers and a tooltip on hover.
+   Desktop (901px and wider) is not changed by this file.
+   Loaded last in App.jsx so it overrides earlier sidebar rules.
+====================================================== */
+
+@media (max-width: 900px) {
+  .donor-layout,
+  .admin-layout,
+  .ngo-layout,
+  .vol-layout {
+    flex-direction: row !important;
+    align-items: stretch;
+  }
+
+  .donor-sidebar {
+    width: 76px !important;
+    min-width: 76px;
+    max-width: 76px;
+    padding: 0.75rem 0.5rem !important;
+    position: sticky !important;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-self: flex-start;
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+    box-shadow: none;
+    z-index: 500;
+  }
+
+  /* Logo at the top: compact icon mark */
+  .donor-sidebar .sidebar-header {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0 0 0.5rem;
+    padding: 0 0 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .donor-sidebar .sidebar-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .donor-sidebar .sidebar-full-logo,
+  .donor-sidebar .sidebar-toggle {
+    display: none !important;
+  }
+
+  .donor-sidebar .sidebar-icon-logo {
+    display: block !important;
+    width: 44px;
+    height: 44px;
+    max-width: none;
+    object-fit: contain;
+  }
+
+  /* User avatar only */
+  .donor-sidebar .sidebar-user {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    margin: 0 0 0.5rem;
+    padding: 0;
+  }
+
+  .donor-sidebar .sidebar-user-info,
+  .donor-sidebar .vol-sidebar-duty-card {
+    display: none !important;
+  }
+
+  /* Navigation: icons, scrolls inside the rail if needed */
+  .donor-sidebar .sidebar-nav {
+    display: flex !important;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    gap: 0.35rem;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+
+  .donor-sidebar .sidebar-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .donor-sidebar .sidebar-link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.5rem 0;
+    margin: 0;
+    border-radius: var(--radius-md);
+  }
+
+  .donor-sidebar .sidebar-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .donor-sidebar .sidebar-label,
+  .donor-sidebar .logout-link .sidebar-label {
+    display: none !important;
+  }
+
+  /* Urgent-count badge sits on the icon */
+  .donor-sidebar .sidebar-badge {
+    display: inline-flex !important;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 0.2rem;
+    font-size: 0.6rem;
+    line-height: 16px;
+  }
+
+  .donor-sidebar .sidebar-bottom {
+    display: flex !important;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .donor-sidebar .logout-link {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  /* Main content takes the rest of the width */
+  .donor-main,
+  .ngo-main,
+  .vol-main,
+  .admin-main {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+  }
+}

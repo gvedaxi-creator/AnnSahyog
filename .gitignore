@@ -1,0 +1,28 @@
+# Dependencies and environment secrets
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Archives, backups and database dumps
+*.zip
+*.sql
+*.bak*
+~$*
+
+# Personal/college documents (kept off the public repo)
+Documentation/
+Claude outputs/
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Scripts containing demo/test passwords (kept out of the public repo)
+AnnSahyog/backend/seedAdmin.js
+AnnSahyog/backend/seedNgo.js
+AnnSahyog/backend/testNgoFlow.js
+AnnSahyog/backend/testVolunteerFlow.js
+testrun/*.js
+testrun/backup-before-fix/

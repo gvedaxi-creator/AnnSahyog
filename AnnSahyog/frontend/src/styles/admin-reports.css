@@ -1,0 +1,678 @@
+/* ======================================================
+   ADMIN REPORTS
+   Shared tokens come from ui-system.css. Each report sets
+   its own --accent colour on its wrapper.
+====================================================== */
+
+.report-picker,
+.report-view,
+.report-table-card {
+  margin-top: 1.25rem;
+}
+
+/* ---- Report selector ---- */
+.report-picker {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.report-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  text-align: left;
+  padding: 1rem 1.05rem 1rem 1.15rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink);
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.report-option::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--accent);
+  opacity: 0.35;
+}
+
+.report-option:hover {
+  border-color: var(--accent);
+}
+
+.report-option:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.report-option.is-active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.report-option.is-active::before {
+  opacity: 1;
+}
+
+.report-option-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--accent) 14%, white);
+  color: var(--accent);
+}
+
+.report-option-title {
+  font-weight: 700;
+  font-size: 0.97rem;
+}
+
+.report-option-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.report-option-count {
+  margin-top: auto;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ---- Report header ---- */
+.report-view-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.report-view-head h2 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+.report-view-head p {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0.2rem 0 0;
+}
+
+.report-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.1rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- KPI cards ---- */
+.report-kpis {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.kpi-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.85rem 0.9rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  min-width: 0;
+}
+
+.kpi-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--accent) 14%, white);
+  color: var(--accent);
+}
+
+.kpi-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.kpi-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.kpi-value {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.kpi-note {
+  font-size: 0.74rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+/* ---- Chart cards ---- */
+.report-charts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.chart-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1rem 1.1rem;
+  min-width: 0;
+}
+
+.chart-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 0.15rem;
+}
+
+.chart-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0 0 0.85rem;
+  line-height: 1.4;
+}
+
+.chart-empty {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0.5rem 0;
+}
+
+/* Donut */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.donut-svg {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.donut-track {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 16;
+}
+
+.donut-value {
+  font-size: 20px;
+  font-weight: 700;
+  fill: var(--ink);
+  font-family: var(--font-heading);
+}
+
+.donut-caption {
+  font-size: 9px;
+  fill: var(--muted);
+}
+
+.chart-legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  min-width: 150px;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.chart-legend li {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.legend-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+}
+
+.legend-pct {
+  color: var(--muted);
+  font-size: 0.78rem;
+  min-width: 2.5rem;
+  text-align: right;
+}
+
+/* Horizontal bars */
+.bar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.bar-list-row {
+  display: grid;
+  grid-template-columns: minmax(80px, 130px) 1fr auto;
+  gap: 0.6rem;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+
+.bar-list-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-list-track {
+  height: 0.6rem;
+  background: var(--cream);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-list-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+}
+
+.bar-list-value {
+  min-width: 1.5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Vertical columns */
+.column-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.column-item {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.column-value {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.column-track {
+  height: 130px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.column-fill {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  min-height: 2px;
+}
+
+.column-label {
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Rate meter */
+.rate-meter-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.rate-meter-value strong {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.rate-meter-value span {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.rate-meter-track {
+  height: 0.7rem;
+  background: var(--cream);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.rate-meter-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+.rate-meter-note {
+  margin: 0.55rem 0 0;
+}
+
+/* ---- Table card ---- */
+.report-table-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(0.9rem, 2.2vw, 1.3rem);
+  min-width: 0;
+}
+
+.report-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.report-search {
+  flex: 1 1 240px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper, #fff);
+  color: var(--muted);
+}
+
+.report-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: var(--ink);
+  outline: none;
+}
+
+.report-custom-dates {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.report-custom-dates input {
+  min-height: 2.5rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper, #fff);
+  color: var(--ink);
+  font: inherit;
+}
+
+.report-export {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.report-hint {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0.6rem 0 0.8rem;
+}
+
+.sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: inherit;
+  color: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sort-btn svg {
+  opacity: 0.45;
+}
+
+.sort-btn svg.is-active {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.report-table td {
+  vertical-align: middle;
+}
+
+.report-pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.report-pager-buttons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+/* ---- Wider screens ---- */
+@media (min-width: 640px) {
+  .report-kpis {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .report-picker {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .report-picker {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .report-charts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+}
+
+/* ---- Phone width ---- */
+@media (max-width: 639px) {
+  .report-view-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .report-meta {
+    align-items: flex-start;
+  }
+
+  .report-export {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .report-custom-dates {
+    width: 100%;
+  }
+
+  .report-custom-dates input {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* ---- Print: keep the report, drop the controls ---- */
+@media print {
+  .admin-sidebar,
+  .page-back-bar,
+  .admin-header-actions,
+  .report-picker,
+  .report-toolbar,
+  .report-pager,
+  .app-footer {
+    display: none !important;
+  }
+
+  .chart-card,
+  .kpi-card,
+  .report-table-card {
+    box-shadow: none;
+  }
+}
+
+/* Print-only full table (TC-130): screen shows the paged table, print shows every row */
+.report-print-only {
+  display: none;
+}
+
+@media print {
+  .report-table-card .admin-table-wrapper,
+  .report-table-card .report-pager {
+    display: none !important;
+  }
+
+  .report-print-only {
+    display: block;
+    color: #000;
+  }
+
+  /* Avoid an empty trailing page with only a repeated header row */
+  @page {
+    margin: 12mm;
+  }
+
+  .report-table-card,
+  .report-print-only,
+  .report-print-table {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .report-print-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .report-print-title {
+    font-size: 18px;
+    margin: 0 0 4px;
+  }
+
+  .report-print-meta {
+    font-size: 11px;
+    margin: 0 0 10px;
+    color: #444;
+  }
+
+  .report-print-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+  }
+
+  .report-print-table th,
+  .report-print-table td {
+    border-bottom: 1px solid #ccc;
+    padding: 4px 6px;
+    text-align: left;
+    vertical-align: top;
+    word-break: break-word;
+  }
+
+  .report-print-table thead {
+    display: table-header-group;
+  }
+
+  .report-print-table tr {
+    break-inside: avoid;
+  }
+
+  /* Keep badges, city, dates and amounts on one line; only the food name may wrap */
+  .report-print-table td,
+  .report-print-table td * {
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+
+  .report-print-table td:nth-child(2),
+  .report-print-table td:nth-child(2) * {
+    white-space: normal !important;
+  }
+
+  .report-print-table td {
+    font-size: 9px;
+    line-height: 1.35;
+  }
+}
