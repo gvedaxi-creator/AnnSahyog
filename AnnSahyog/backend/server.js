@@ -1067,7 +1067,12 @@ app.get("/api/donation-requests/donor/:donor_id", (req, res) => {
 
       -- NGO information
       u.name AS ngo_name,
-      u.email AS ngo_email
+      u.email AS ngo_email,
+
+      -- Pickup / volunteer progress (no volunteer until one takes it)
+      pd.status AS delivery_status,
+      pd.volunteer_id,
+      vu.name AS volunteer_name
 
     FROM donation_requests dr
 
@@ -1079,6 +1084,15 @@ app.get("/api/donation-requests/donor/:donor_id", (req, res) => {
 
     INNER JOIN users u
       ON n.user_id = u.user_id
+
+    LEFT JOIN pickup_delivery pd
+      ON d.donation_id = pd.donation_id
+
+    LEFT JOIN volunteers v
+      ON pd.volunteer_id = v.volunteer_id
+
+    LEFT JOIN users vu
+      ON v.user_id = vu.user_id
 
     WHERE d.donor_id = ?
 
@@ -3427,13 +3441,17 @@ app.get("/api/volunteers/:volunteer_id/dashboard", (req, res) => {
         COUNT(CASE WHEN pd.volunteer_id = ? AND pd.status IN ('ASSIGNED', 'PICKED_UP', 'IN_TRANSIT') THEN 1 END) AS active_tasks_count,
         COUNT(CASE WHEN pd.volunteer_id = ? AND pd.status = 'DELIVERED' THEN 1 END) AS completed_tasks_count,
         COUNT(CASE WHEN pd.volunteer_id IS NULL AND pd.status = 'ASSIGNED' AND ${inVolunteerArea("me", "d")} THEN 1 END) AS open_tasks_count,
-        COALESCE(SUM(CASE WHEN pd.volunteer_id = ? AND pd.status = 'DELIVERED' THEN d.quantity ELSE 0 END), 0) AS total_kg_delivered
+        COALESCE(SUM(CASE WHEN pd.volunteer_id = ? AND pd.status = 'DELIVERED' AND LOWER(d.unit) = 'kg' THEN d.quantity ELSE 0 END), 0) AS total_kg_delivered,
+        -- A plate is one meal; other units use ~2.5 meals per unit
+        COALESCE(SUM(CASE WHEN pd.volunteer_id = ? AND pd.status = 'DELIVERED'
+          THEN d.quantity * (CASE WHEN LOWER(d.unit) IN ('plates','plate','meals','meal') THEN 1 ELSE 2.5 END)
+          ELSE 0 END), 0) AS estimated_meals
       FROM pickup_delivery pd
       LEFT JOIN donations d ON pd.donation_id = d.donation_id
       INNER JOIN volunteers me ON me.volunteer_id = ?
     `;
 
-    db.query(statsSql, [volunteer_id, volunteer_id, volunteer_id, volunteer_id], (sErr, sRes) => {
+    db.query(statsSql, [volunteer_id, volunteer_id, volunteer_id, volunteer_id, volunteer_id], (sErr, sRes) => {
       if (sErr) {
         return res.status(500).json({ success: false, message: "Failed to fetch stats", error: sErr.message });
       }
@@ -3469,7 +3487,7 @@ app.get("/api/volunteers/:volunteer_id/dashboard", (req, res) => {
             completed_tasks: sRes[0]?.completed_tasks_count || 0,
             open_tasks: sRes[0]?.open_tasks_count || 0,
             total_kg_delivered: sRes[0]?.total_kg_delivered || 0,
-            estimated_meals: Math.round((sRes[0]?.total_kg_delivered || 0) * 2.5),
+            estimated_meals: Math.round(Number(sRes[0]?.estimated_meals || 0)),
             availability: volunteer.availability,
           },
           active_task: aRes && aRes.length > 0 ? aRes[0] : null,
@@ -3954,6 +3972,8 @@ app.get("/api/public/home-stats", (req, res) => {
       (SELECT COUNT(*) FROM donations WHERE status IN ('DELIVERED','COMPLETED')) AS completed_deliveries,
       (SELECT COALESCE(SUM(quantity), 0) FROM donations
          WHERE status IN ('DELIVERED','COMPLETED') AND LOWER(unit) = 'kg') AS kg_delivered,
+      (SELECT COALESCE(SUM(quantity), 0) FROM donations
+         WHERE status IN ('DELIVERED','COMPLETED') AND LOWER(unit) IN ('plates','plate','meals','meal')) AS plates_delivered,
       (SELECT COUNT(*) FROM ngos WHERE verification_status = 'ACTIVE') AS active_ngos,
       (SELECT COUNT(*) FROM volunteers v INNER JOIN users u ON v.user_id = u.user_id
          WHERE u.status = 'ACTIVE') AS active_volunteers
@@ -3969,7 +3989,7 @@ app.get("/api/public/home-stats", (req, res) => {
       stats: {
         donations: Number(r.total_donations),
         deliveries: Number(r.completed_deliveries),
-        meals: Math.round(Number(r.kg_delivered) * 2.5),
+        meals: Math.round(Number(r.kg_delivered) * 2.5 + Number(r.plates_delivered)),
         ngos: Number(r.active_ngos),
         volunteers: Number(r.active_volunteers),
       },

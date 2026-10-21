@@ -2059,3 +2059,91 @@ img.img-fallback {
     align-items: flex-start;
   }
 }
+
+/* ===================== SIDEBARS: LOGO TOGGLE (all roles) ===================== */
+/* The logo is the expand / collapse button (no separate arrow) */
+.sidebar-logo-toggle {
+  width: 100%;
+  padding: 0.25rem;
+  border: 0;
+  border-radius: var(--radius-md, 10px);
+  background: none;
+  cursor: pointer;
+  justify-content: center;
+  transition: background var(--transition-fast);
+}
+.sidebar-logo-toggle:hover {
+  background: var(--surface-subtle);
+}
+.sidebar-logo-toggle:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 2px;
+}
+.donor-sidebar .sidebar-full-logo {
+  width: 100%;
+  max-width: 220px;
+  height: 72px;
+  object-fit: cover;
+}
+.donor-sidebar.sidebar-collapsed .sidebar-icon-logo {
+  width: 44px;
+  height: 44px;
+}
+
+/* ===================== ADMIN ALERT BANNER ===================== */
+/* Icon stays a fixed square; text takes the free space; button sits right */
+.admin-alert-banner {
+  flex-wrap: nowrap;
+  gap: 0.9rem;
+}
+.admin-alert-banner > .banner-icon-box {
+  flex: 0 0 40px;
+}
+.admin-alert-banner > .banner-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.admin-alert-banner > .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .admin-alert-banner {
+    flex-wrap: wrap;
+  }
+  .admin-alert-banner > .banner-text {
+    flex-basis: calc(100% - 40px - 0.9rem);
+  }
+  .admin-alert-banner > .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ===================== DASHBOARD SPACING (all roles) ===================== */
+/* Tighter outer padding and card gaps so content uses the width */
+@media (min-width: 641px) {
+  .donor-main .dashboard-page {
+    padding: 1.75rem 0 2.5rem;
+  }
+  .donor-main .dashboard-page .container,
+  .donor-main .vol-content {
+    max-width: 1380px;
+    padding-inline: clamp(1rem, 2vw, 1.5rem);
+  }
+  .donor-main .vol-content {
+    padding-top: 1.75rem;
+    padding-bottom: 2.5rem;
+  }
+  .donor-main .dashboard-stats-grid,
+  .donor-main .admin-quick-links {
+    gap: 0.875rem;
+    margin-bottom: 1.25rem;
+  }
+  .donor-main .admin-dashboard-two-col {
+    gap: 1rem;
+  }
+  .donor-main .admin-alert-banner {
+    margin-bottom: 1.25rem;
+  }
+}

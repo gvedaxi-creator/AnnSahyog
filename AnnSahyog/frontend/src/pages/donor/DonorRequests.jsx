@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import { Link } from "react-router-dom";
 import DonorSidebar from "../../components/DonorSidebar";
 import { getDonorRequests, respondToDonationRequest } from "../../services/api";
+import { getPickupStatus, getStatusLabel } from "../../utils/status";
 import {
   Building2,
   Utensils,
@@ -244,7 +245,7 @@ function DonorRequests() {
                         <div>
                           <strong>{req.food_type || "Food Batch"}</strong>
                           <span>
-                            Claimed: {req.requested_quantity} {req.unit || "portions"}
+                            Claimed: {req.requested_quantity} {req.donation_unit || "portions"}
                           </span>
                         </div>
                       </div>
@@ -299,7 +300,10 @@ function DonorRequests() {
                         <div className="request-decision-stamp">
                           {req.status === "APPROVED" ? (
                             <span className="stamp-approved">
-                              <CheckCircle2 size={14} /> Approved · Volunteer Assigned
+                              <CheckCircle2 size={14} /> Approved
+                              {req.delivery_status &&
+                                ` · ${getStatusLabel(getPickupStatus(req.delivery_status, req.volunteer_id))}`}
+                              {req.volunteer_name && ` (${req.volunteer_name})`}
                             </span>
                           ) : (
                             <span className="stamp-rejected"><XCircle size={14} /> Declined</span>

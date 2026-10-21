@@ -1,4 +1,5 @@
 import { formatPhone } from "../../utils/phone";
+import { estimateMeals } from "../../utils/meals";
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import VolunteerSidebar from "../../components/VolunteerSidebar";
@@ -128,7 +129,7 @@ function ActiveDelivery() {
                   </p>
                   <div className="celebrate-stats">
                     <div className="c-stat">
-                      <span className="c-number">~{Math.round(task.quantity * 2.5)}</span>
+                      <span className="c-number">~{Math.round(estimateMeals(task.quantity, task.unit))}</span>
                       <span className="c-label">Meals Provided</span>
                     </div>
                     <div className="c-stat">

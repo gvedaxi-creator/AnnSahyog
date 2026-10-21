@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate, Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   Users,
@@ -9,8 +9,6 @@ import {
   HeartHandshake,
   MessageSquare,
   LogOut,
-  ChevronLeft,
-  ChevronRight,
   ShieldCheck,
   BarChart3,
 } from "lucide-react";
@@ -100,14 +98,18 @@ function AdminSidebar() {
           HEADER
       ========================= */}
       <div className="sidebar-header">
-        <Link
-          to="/admin/dashboard"
-          className="sidebar-logo"
-          aria-label="Admin Dashboard"
+        {/* The logo itself expands / collapses the sidebar */}
+        <button
+          type="button"
+          className="sidebar-logo sidebar-logo-toggle"
+          onClick={() => setCollapsed(!collapsed)}
+          aria-expanded={!collapsed}
+          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+          title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {/* Full logo */}
           <img
-            src="/annsahyog-horizontal.png"
+            src="/annsahyog-logo-trim.png"
             alt="AnnSahyog"
             className="sidebar-full-logo"
           />
@@ -118,16 +120,6 @@ function AdminSidebar() {
             alt="AnnSahyog"
             className="sidebar-icon-logo"
           />
-        </Link>
-
-        <button
-          type="button"
-          className="sidebar-toggle"
-          onClick={() => setCollapsed(!collapsed)}
-          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-          title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-        >
-          {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </button>
       </div>
 

@@ -16,6 +16,7 @@ import {
   AlertCircle,
   CheckCircle2,
 } from "lucide-react";
+import { estimateMeals } from "../../utils/meals";
 
 function VolunteerHistory() {
   const user = JSON.parse(localStorage.getItem("user") || "null");
@@ -43,8 +44,13 @@ function VolunteerHistory() {
     loadHistory();
   }, [user?.volunteer_id]);
 
-  const totalKg = history.reduce((sum, item) => sum + Number(item.quantity || 0), 0);
-  const estimatedMeals = Math.round(totalKg * 2.5);
+  // Only kg quantities add to the kg total; plates etc. are not weights
+  const totalKg = history
+    .filter((item) => String(item.unit || "").toLowerCase() === "kg")
+    .reduce((sum, item) => sum + Number(item.quantity || 0), 0);
+  const estimatedMeals = Math.round(
+    history.reduce((sum, item) => sum + estimateMeals(item.quantity, item.unit), 0)
+  );
 
   const filteredHistory = history.filter((item) => {
     return (

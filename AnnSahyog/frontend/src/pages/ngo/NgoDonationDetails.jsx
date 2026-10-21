@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import { Link, useParams } from "react-router-dom";
 import NgoSidebar from "../../components/NgoSidebar";
-import { getDonationById, createDonationRequest } from "../../services/api";
+import { getDonationById, createDonationRequest, getNgoRequests } from "../../services/api";
 import {
   ArrowLeft,
   Utensils,
@@ -34,6 +34,9 @@ function NgoDonationDetails() {
   const [submitting, setSubmitting] = useState(false);
   const [modalError, setModalError] = useState("");
 
+  // This NGO's pending request for the batch, if one was already sent
+  const [pendingRequest, setPendingRequest] = useState(null);
+
   const fetchDetails = async () => {
     try {
       setLoading(true);
@@ -43,6 +46,19 @@ function NgoDonationDetails() {
       if (d) {
         setRequestedQty(d.quantity);
         setMessage("We would like to request this food for distribution at our community center.");
+      }
+
+      // Not fatal: without it the backend still rejects a duplicate request
+      if (user?.ngo_id) {
+        try {
+          const reqData = await getNgoRequests(user.ngo_id);
+          const existing = (reqData.requests || []).find(
+            (r) => String(r.donation_id) === String(id) && r.request_status === "PENDING"
+          );
+          setPendingRequest(existing || null);
+        } catch (reqErr) {
+          console.error("NGO requests fetch error:", reqErr);
+        }
       }
     } catch (err) {
       console.error("Donation fetch error:", err);
@@ -68,7 +84,7 @@ function NgoDonationDetails() {
     try {
       setSubmitting(true);
       setModalError("");
-      await createDonationRequest({
+      const res = await createDonationRequest({
         donation_id: donation.donation_id,
         ngo_id: user.ngo_id,
         requested_quantity: requestedQty,
@@ -76,6 +92,7 @@ function NgoDonationDetails() {
       });
 
       setSuccessMsg(`Food request sent successfully! Donor has been notified.`);
+      setPendingRequest({ request_id: res.request_id, requested_quantity: requestedQty });
       setShowModal(false);
     } catch (err) {
       console.error("Submit request error:", err);
@@ -268,7 +285,22 @@ function NgoDonationDetails() {
                         </div>
                       </div>
 
-                      {isAvailable && (
+                      {/* Confirmation sits where the claim button was, so it is seen */}
+                      {pendingRequest ? (
+                        <div className="action-hint-box hint-green" role="status" style={{ marginTop: "1.25rem" }}>
+                          <CheckCircle2 size={16} />
+                          <div>
+                            <strong>
+                              Request{pendingRequest.request_id ? ` #${pendingRequest.request_id}` : ""} sent: waiting for donor approval
+                            </strong>
+                            <p>
+                              You requested {pendingRequest.requested_quantity} {donation.unit}. The donor has been notified and you
+                              will see their decision in{" "}
+                              <Link to="/ngo/requests">My Requests</Link>.
+                            </p>
+                          </div>
+                        </div>
+                      ) : isAvailable && (
                         <button
                           type="button"
                           className="btn btn-primary btn-large btn-full-width"
