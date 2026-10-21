@@ -1,0 +1,7 @@
+$kind: http-request
+description: Only the logged-in user's own notifications.
+url: "{{baseUrl}}/api/notifications/user/{{userId}}"
+method: GET
+headers:
+  Authorization: Bearer {{donorToken}}
+order: 1000

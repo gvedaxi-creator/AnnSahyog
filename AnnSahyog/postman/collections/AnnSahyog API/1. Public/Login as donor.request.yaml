@@ -1,0 +1,17 @@
+$kind: http-request
+description: Logs in and stores the token in the matching collection variable.
+url: "{{baseUrl}}/api/users/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: '{ "email": "{{donorEmail}}", "password": "{{donorPassword}}" }'
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status is 200', () => pm.response.to.have.status(200));
+      const j = pm.response.json();
+      if (j.token) { pm.collectionVariables.set('donorToken', j.token); }
+    language: text/javascript
+order: 6000

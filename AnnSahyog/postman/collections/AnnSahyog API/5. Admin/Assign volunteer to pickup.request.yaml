@@ -1,0 +1,14 @@
+$kind: http-request
+description: Needs an approved NGO request for this donation.
+url: "{{baseUrl}}/api/admin/donations/{{donationId}}/assign-volunteer"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{adminToken}}
+body:
+  type: json
+  content: |-
+    {
+      "volunteer_id": {{volunteerId}}
+    }
+order: 7000

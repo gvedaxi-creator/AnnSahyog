@@ -1,0 +1,7 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/admin/feedback"
+method: GET
+headers:
+  Authorization: Bearer {{adminToken}}
+order: 13000

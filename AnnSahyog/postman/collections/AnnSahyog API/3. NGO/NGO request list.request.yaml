@@ -1,0 +1,7 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/donation-requests/ngo/{{ngoId}}"
+method: GET
+headers:
+  Authorization: Bearer {{ngoToken}}
+order: 6000

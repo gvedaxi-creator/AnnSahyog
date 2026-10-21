@@ -1,0 +1,14 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/volunteers/tasks/{{pickupId}}/accept"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{volunteerToken}}
+body:
+  type: json
+  content: |-
+    {
+      "volunteer_id": {{volunteerId}}
+    }
+order: 8000

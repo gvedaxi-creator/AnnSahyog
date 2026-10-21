@@ -1,0 +1,14 @@
+$kind: http-request
+description: "status: ACTIVE or INACTIVE."
+url: "{{baseUrl}}/api/admin/users/{{userId}}/status"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{adminToken}}
+body:
+  type: json
+  content: |-
+    {
+      "status": "INACTIVE"
+    }
+order: 3000

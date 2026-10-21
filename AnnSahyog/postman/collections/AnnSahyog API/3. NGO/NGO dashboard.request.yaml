@@ -1,0 +1,7 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/ngos/{{ngoId}}/dashboard"
+method: GET
+headers:
+  Authorization: Bearer {{ngoToken}}
+order: 1000

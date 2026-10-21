@@ -1,0 +1,19 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/ngos/{{ngoId}}/profile"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{ngoToken}}
+body:
+  type: json
+  content: |-
+    {
+      "name": "Test NGO Contact",
+      "phone": "9876543212",
+      "organization_name": "Test NGO",
+      "registration_number": "REG-001",
+      "address": "Ahmedabad",
+      "city": "Ahmedabad"
+    }
+order: 3000

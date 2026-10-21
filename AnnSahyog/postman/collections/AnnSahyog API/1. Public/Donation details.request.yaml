@@ -1,0 +1,5 @@
+$kind: http-request
+description: Public donation details.
+url: "{{baseUrl}}/api/donations/{{donationId}}"
+method: GET
+order: 10000

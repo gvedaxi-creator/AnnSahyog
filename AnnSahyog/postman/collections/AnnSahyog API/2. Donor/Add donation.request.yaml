@@ -1,0 +1,28 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/donations"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{donorToken}}
+body:
+  type: json
+  content: |-
+    {
+      "donor_id": {{donorId}},
+      "items": [
+        {
+          "food_item": "Rice",
+          "quantity": 5,
+          "unit": "kg"
+        }
+      ],
+      "description": "Surplus rice from event",
+      "prepared_date": "2026-10-21",
+      "expiry_date": "2026-10-22",
+      "pickup_address": "Test Street, Ahmedabad",
+      "city": "Ahmedabad",
+      "latitude": 23.0225,
+      "longitude": 72.5714
+    }
+order: 1000

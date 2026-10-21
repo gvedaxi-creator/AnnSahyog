@@ -1,0 +1,21 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/users/register"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Test NGO Contact",
+      "email": "ngo.test@example.com",
+      "password": "Test@1234",
+      "phone": "9876543212",
+      "role": "NGO",
+      "organization_name": "Test NGO",
+      "registration_number": "REG-001",
+      "address": "Ahmedabad",
+      "city": "Ahmedabad"
+    }
+order: 3000

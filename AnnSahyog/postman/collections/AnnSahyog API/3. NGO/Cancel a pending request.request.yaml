@@ -1,0 +1,14 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/donation-requests/{{requestId}}/cancel"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{ngoToken}}
+body:
+  type: json
+  content: |-
+    {
+      "ngo_id": {{ngoId}}
+    }
+order: 7000

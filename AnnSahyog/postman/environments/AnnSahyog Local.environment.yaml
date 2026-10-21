@@ -1,0 +1,20 @@
+name: AnnSahyog Local
+values:
+  - key: baseUrl
+    value: 'http://localhost:5000'
+  - key: adminEmail
+    value: admin@annsahyog.org
+  - key: adminPassword
+    value: ''
+  - key: donorEmail
+    value: ''
+  - key: donorPassword
+    value: ''
+  - key: ngoEmail
+    value: ngo@annsahyog.org
+  - key: ngoPassword
+    value: ''
+  - key: volunteerEmail
+    value: volunteer@annsahyog.org
+  - key: volunteerPassword
+    value: ''

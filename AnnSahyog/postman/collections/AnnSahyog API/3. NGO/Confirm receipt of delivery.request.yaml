@@ -1,0 +1,7 @@
+$kind: http-request
+description: Marks the delivery as received by the NGO.
+url: "{{baseUrl}}/api/pickup-delivery/{{pickupId}}/confirm-receipt"
+method: PUT
+headers:
+  Authorization: Bearer {{ngoToken}}
+order: 8000

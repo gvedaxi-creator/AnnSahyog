@@ -1,0 +1,542 @@
+{
+  "when": "2026-10-21T08:26:29.998Z",
+  "counts": {
+    "PASS": 89
+  },
+  "results": [
+    {
+      "id": "TC-001",
+      "title": "Valid admin login",
+      "result": "PASS",
+      "detail": "HTTP 200: Login successful"
+    },
+    {
+      "id": "TC-002",
+      "title": "Valid donor login",
+      "result": "PASS",
+      "detail": "HTTP 200: Login successful"
+    },
+    {
+      "id": "TC-003",
+      "title": "Valid NGO login",
+      "result": "PASS",
+      "detail": "HTTP 200: Login successful"
+    },
+    {
+      "id": "TC-004",
+      "title": "Valid volunteer login",
+      "result": "PASS",
+      "detail": "HTTP 200: Login successful"
+    },
+    {
+      "id": "TC-005",
+      "title": "Wrong password",
+      "result": "PASS",
+      "detail": "HTTP 401: Invalid email or password"
+    },
+    {
+      "id": "TC-006",
+      "title": "Unregistered email",
+      "result": "PASS",
+      "detail": "HTTP 401: Invalid email or password"
+    },
+    {
+      "id": "TC-008",
+      "title": "Missing email",
+      "result": "PASS",
+      "detail": "HTTP 400: Email and password are required"
+    },
+    {
+      "id": "TC-009",
+      "title": "Missing password",
+      "result": "PASS",
+      "detail": "HTTP 400: Email and password are required"
+    },
+    {
+      "id": "TC-011",
+      "title": "SQL injection in login",
+      "result": "PASS",
+      "detail": "HTTP 401: Invalid email or password"
+    },
+    {
+      "id": "TC-014",
+      "title": "Register donor (valid)",
+      "result": "PASS",
+      "detail": "Checked by run-register-tests.js (test accounts cleaned up)"
+    },
+    {
+      "id": "TC-015",
+      "title": "Register NGO (valid)",
+      "result": "PASS",
+      "detail": "Checked by run-register-tests.js (test accounts cleaned up)"
+    },
+    {
+      "id": "TC-016",
+      "title": "Register volunteer (valid)",
+      "result": "PASS",
+      "detail": "Checked by run-register-tests.js (test accounts cleaned up)"
+    },
+    {
+      "id": "TC-022",
+      "title": "Double submit creates one account only",
+      "result": "PASS",
+      "detail": "Checked by run-register-tests.js (test accounts cleaned up)"
+    },
+    {
+      "id": "TC-023",
+      "title": "Password stored hashed",
+      "result": "PASS",
+      "detail": "Checked by run-register-tests.js (test accounts cleaned up)"
+    },
+    {
+      "id": "TC-017",
+      "title": "Duplicate email",
+      "result": "PASS",
+      "detail": "HTTP 409: Email already registered"
+    },
+    {
+      "id": "TC-018",
+      "title": "Required fields missing",
+      "result": "PASS",
+      "detail": "HTTP 400: Name, email, password and role are required"
+    },
+    {
+      "id": "TC-025",
+      "title": "Add donation (valid)",
+      "result": "PASS",
+      "detail": "HTTP 201: Donation created successfully."
+    },
+    {
+      "id": "TC-026",
+      "title": "Add donation: required details missing",
+      "result": "PASS",
+      "detail": "HTTP 400: Please provide all required donation details."
+    },
+    {
+      "id": "TC-027",
+      "title": "Add donation: no food items",
+      "result": "PASS",
+      "detail": "HTTP 400: Please provide all required donation details."
+    },
+    {
+      "id": "TC-028",
+      "title": "Add donation: no map pin",
+      "result": "PASS",
+      "detail": "HTTP 400: Please select a valid pickup location on the map."
+    },
+    {
+      "id": "TC-029",
+      "title": "Expiry before prepared date",
+      "result": "PASS",
+      "detail": "HTTP 400: Expiry date cannot be before the prepared date."
+    },
+    {
+      "id": "TC-030",
+      "title": "Zero quantity",
+      "result": "PASS",
+      "detail": "HTTP 400: Please provide a valid food item, quantity and unit for every item."
+    },
+    {
+      "id": "TC-031",
+      "title": "Donation with unknown donor",
+      "result": "PASS",
+      "detail": "HTTP 403"
+    },
+    {
+      "id": "TC-032",
+      "title": "My Donations list",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-035",
+      "title": "Incoming requests list",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-039",
+      "title": "Invalid response status",
+      "result": "PASS",
+      "detail": "HTTP 400: Status must be APPROVED or REJECTED"
+    },
+    {
+      "id": "TC-044",
+      "title": "Donor profile view",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-045",
+      "title": "Update donor profile (valid)",
+      "result": "PASS",
+      "detail": "HTTP 200: Profile updated successfully"
+    },
+    {
+      "id": "TC-046",
+      "title": "Update donor profile: phone empty",
+      "result": "PASS",
+      "detail": "HTTP 400: Phone number is required"
+    },
+    {
+      "id": "TC-047",
+      "title": "NGO dashboard counts (API responds)",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-048",
+      "title": "Browse shows only available food",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-138",
+      "title": "Home shows available food only",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-053",
+      "title": "Donation details (NGO view)",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-054",
+      "title": "Unknown donation ID",
+      "result": "PASS",
+      "detail": "HTTP 404: Donation not found"
+    },
+    {
+      "id": "TC-056",
+      "title": "Request: quantity missing",
+      "result": "PASS",
+      "detail": "HTTP 400: Donation ID, NGO ID, and requested quantity are required"
+    },
+    {
+      "id": "TC-057",
+      "title": "Request more than available",
+      "result": "PASS",
+      "detail": "HTTP 400: Requested quantity (9999) exceeds available quantity (5.00)."
+    },
+    {
+      "id": "TC-055",
+      "title": "Request donation (valid)",
+      "result": "PASS",
+      "detail": "HTTP 201: Food request submitted successfully! The donor has been notified."
+    },
+    {
+      "id": "TC-059",
+      "title": "Duplicate pending request",
+      "result": "PASS",
+      "detail": "HTTP 409: You already have a pending request for this donation."
+    },
+    {
+      "id": "TC-061",
+      "title": "NGO requests list",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-062",
+      "title": "Cancel pending request",
+      "result": "PASS",
+      "detail": "HTTP 200: Food request has been cancelled."
+    },
+    {
+      "id": "TC-058",
+      "title": "Request unavailable donation (seed ACCEPTED donation 3)",
+      "result": "PASS",
+      "detail": "HTTP 400: This donation is currently accepted and cannot be requested."
+    },
+    {
+      "id": "TC-055b",
+      "title": "Request donation again (for approval tests)",
+      "result": "PASS",
+      "detail": "HTTP 201: Food request submitted successfully! The donor has been notified."
+    },
+    {
+      "id": "TC-036",
+      "title": "Donor approves request",
+      "result": "PASS",
+      "detail": "HTTP 200: Donation request approved successfully"
+    },
+    {
+      "id": "TC-038",
+      "title": "Answer an already-answered request",
+      "result": "PASS",
+      "detail": "HTTP 400: This request has already been approved"
+    },
+    {
+      "id": "TC-063",
+      "title": "Cancel answered (approved) request",
+      "result": "PASS",
+      "detail": "HTTP 400: Request could not be cancelled. It may have already been responded to."
+    },
+    {
+      "id": "TC-070",
+      "title": "NGO profile update",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-064",
+      "title": "Deliveries list",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-095",
+      "title": "Admin dashboard totals (API responds)",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-096",
+      "title": "User directory lists users",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-097",
+      "title": "Deactivate user",
+      "result": "PASS",
+      "detail": "HTTP 200: User status successfully updated to INACTIVE"
+    },
+    {
+      "id": "TC-098",
+      "title": "Deactivated user cannot log in",
+      "result": "PASS",
+      "detail": "HTTP 403: Account is inactive"
+    },
+    {
+      "id": "TC-007",
+      "title": "Inactive account login",
+      "result": "PASS",
+      "detail": "Same inactive-account check as TC-098: HTTP 403: Account is inactive"
+    },
+    {
+      "id": "TC-099",
+      "title": "Reactivate user",
+      "result": "PASS",
+      "detail": "HTTP 200: User status successfully updated to ACTIVE"
+    },
+    {
+      "id": "TC-100",
+      "title": "Invalid user status",
+      "result": "PASS",
+      "detail": "HTTP 400: Status must be either ACTIVE or INACTIVE"
+    },
+    {
+      "id": "TC-101",
+      "title": "Unknown user ID",
+      "result": "PASS",
+      "detail": "HTTP 404: User not found"
+    },
+    {
+      "id": "TC-102",
+      "title": "NGO list",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-105",
+      "title": "Invalid NGO status",
+      "result": "PASS",
+      "detail": "HTTP 400: Status must be PENDING, ACTIVE, DEACTIVE, or REJECTED"
+    },
+    {
+      "id": "TC-107",
+      "title": "Admin donations list",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-108",
+      "title": "Admin donation details",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-112",
+      "title": "Pickups page",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-113",
+      "title": "Donations awaiting volunteer",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-115",
+      "title": "Assign volunteer without approved request",
+      "result": "PASS",
+      "detail": "HTTP 404: No approved NGO request found for this donation"
+    },
+    {
+      "id": "TC-109",
+      "title": "Change donation status",
+      "result": "PASS",
+      "detail": "HTTP 200: Donation status updated to CANCELLED"
+    },
+    {
+      "id": "TC-110",
+      "title": "Invalid donation status",
+      "result": "PASS",
+      "detail": "HTTP 400: Status must be one of: AVAILABLE, REQUESTED, ACCEPTED, PICKED_UP, DELIVERED, CANCELLED"
+    },
+    {
+      "id": "TC-111",
+      "title": "Unknown donation ID (admin)",
+      "result": "PASS",
+      "detail": "HTTP 404: Donation not found"
+    },
+    {
+      "id": "TC-118",
+      "title": "Assign without volunteer",
+      "result": "PASS",
+      "detail": "HTTP 400: Volunteer ID is required"
+    },
+    {
+      "id": "TC-114",
+      "title": "Assign volunteer (valid)",
+      "result": "PASS",
+      "detail": "HTTP 200: Rahul Verma has been assigned to this pickup"
+    },
+    {
+      "id": "TC-119",
+      "title": "Volunteers list",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-120",
+      "title": "Feedback list",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-121",
+      "title": "Submit feedback (valid)",
+      "result": "PASS",
+      "detail": "HTTP 201: Thank you for your feedback!"
+    },
+    {
+      "id": "TC-122",
+      "title": "Submit feedback: empty comment",
+      "result": "PASS",
+      "detail": "HTTP 400: User ID and comments are required"
+    },
+    {
+      "id": "TC-136",
+      "title": "Admin API without login is rejected",
+      "result": "PASS",
+      "detail": "HTTP 401: Please log in again."
+    },
+    {
+      "id": "TC-073",
+      "title": "Go off duty",
+      "result": "PASS",
+      "detail": "HTTP 200: Availability updated to UNAVAILABLE"
+    },
+    {
+      "id": "TC-072",
+      "title": "Go on duty",
+      "result": "PASS",
+      "detail": "HTTP 200: Availability updated to AVAILABLE"
+    },
+    {
+      "id": "TC-074",
+      "title": "Invalid availability value",
+      "result": "PASS",
+      "detail": "HTTP 400: Availability must be AVAILABLE or UNAVAILABLE"
+    },
+    {
+      "id": "TC-071",
+      "title": "Volunteer dashboard counts (API responds)",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-075",
+      "title": "Task list",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    },
+    {
+      "id": "TC-077",
+      "title": "Unknown task ID",
+      "result": "PASS",
+      "detail": "HTTP 404: Task not found"
+    },
+    {
+      "id": "TC-083",
+      "title": "Accept same task twice",
+      "result": "PASS",
+      "detail": "HTTP 200: This task is already yours."
+    },
+    {
+      "id": "TC-084",
+      "title": "Accept without volunteer ID",
+      "result": "PASS",
+      "detail": "HTTP 400: Volunteer ID is required"
+    },
+    {
+      "id": "TC-090",
+      "title": "Update another volunteer's task",
+      "result": "PASS",
+      "detail": "HTTP 401"
+    },
+    {
+      "id": "TC-085",
+      "title": "Mark as picked up",
+      "result": "PASS",
+      "detail": "HTTP 200: Delivery status updated to PICKED_UP"
+    },
+    {
+      "id": "TC-086",
+      "title": "Mark as in transit",
+      "result": "PASS",
+      "detail": "HTTP 200: Delivery status updated to IN_TRANSIT"
+    },
+    {
+      "id": "TC-088",
+      "title": "Invalid delivery status",
+      "result": "PASS",
+      "detail": "HTTP 400: Invalid status value"
+    },
+    {
+      "id": "TC-087",
+      "title": "Mark as delivered",
+      "result": "PASS",
+      "detail": "HTTP 200: Delivery status updated to DELIVERED"
+    },
+    {
+      "id": "TC-065",
+      "title": "Confirm receipt (NGO)",
+      "result": "PASS",
+      "detail": "HTTP 200: Delivery confirmed! Surplus food has been marked as safely received."
+    },
+    {
+      "id": "TC-067",
+      "title": "Confirm receipt without login (other NGO)",
+      "result": "PASS",
+      "detail": "HTTP 401: Please log in again."
+    },
+    {
+      "id": "TC-066",
+      "title": "Confirm receipt: unknown delivery",
+      "result": "PASS",
+      "detail": "HTTP 403: You can only confirm deliveries sent to your organization."
+    },
+    {
+      "id": "TC-092",
+      "title": "Volunteer history",
+      "result": "PASS",
+      "detail": "HTTP 200"
+    }
+  ]
+}

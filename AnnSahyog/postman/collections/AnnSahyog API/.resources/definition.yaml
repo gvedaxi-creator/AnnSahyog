@@ -1,0 +1,16 @@
+$kind: collection
+description: All backend endpoints of AnnSahyog (food redistribution). Run 'Login' requests first; they store tokens in collection variables. Set donorId, ngoId, volunteerId, userId, donationId, requestId, pickupId and notificationId from the data in your database.
+variables:
+  baseUrl: http://localhost:5000
+  adminToken: ""
+  donorToken: ""
+  ngoToken: ""
+  volunteerToken: ""
+  donorId: "1"
+  ngoId: "1"
+  volunteerId: "1"
+  userId: "1"
+  donationId: "1"
+  requestId: "1"
+  pickupId: "1"
+  notificationId: "1"

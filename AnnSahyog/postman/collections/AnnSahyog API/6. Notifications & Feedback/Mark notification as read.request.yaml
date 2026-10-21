@@ -1,0 +1,14 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/notifications/{{notificationId}}/read"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{donorToken}}
+body:
+  type: json
+  content: |-
+    {
+      "user_id": {{userId}}
+    }
+order: 3000

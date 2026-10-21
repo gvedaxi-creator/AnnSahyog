@@ -1,0 +1,7 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/volunteers/{{volunteerId}}/tasks"
+method: GET
+headers:
+  Authorization: Bearer {{volunteerToken}}
+order: 5000

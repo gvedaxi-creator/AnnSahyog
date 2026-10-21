@@ -26,3 +26,6 @@ AnnSahyog/backend/testNgoFlow.js
 AnnSahyog/backend/testVolunteerFlow.js
 testrun/*.js
 testrun/backup-before-fix/
+
+# Transfer bundles
+*.bundle

@@ -1,0 +1,17 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/volunteers/{{volunteerId}}/profile"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{volunteerToken}}
+body:
+  type: json
+  content: |-
+    {
+      "name": "Test Volunteer",
+      "phone": "9876543213",
+      "address": "Ahmedabad",
+      "city": "Ahmedabad"
+    }
+order: 3000

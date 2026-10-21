@@ -1,0 +1,16 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/feedback"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{donorToken}}
+body:
+  type: json
+  content: |-
+    {
+      "user_id": {{userId}},
+      "donation_id": {{donationId}},
+      "comments": "Smooth pickup, thank you"
+    }
+order: 4000

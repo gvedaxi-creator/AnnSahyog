@@ -1,0 +1,19 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/donors/{{donorId}}/profile"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{donorToken}}
+body:
+  type: json
+  content: |-
+    {
+      "phone": "9876543210",
+      "organization_name": "Test Donor",
+      "address": "Test Street",
+      "city": "Ahmedabad",
+      "latitude": 23.0225,
+      "longitude": 72.5714
+    }
+order: 8000

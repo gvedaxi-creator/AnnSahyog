@@ -1,0 +1,15 @@
+$kind: http-request
+description: status must be APPROVED or REJECTED.
+url: "{{baseUrl}}/api/donation-requests/{{requestId}}/respond"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{donorToken}}
+body:
+  type: json
+  content: |-
+    {
+      "donor_id": {{donorId}},
+      "status": "APPROVED"
+    }
+order: 6000
