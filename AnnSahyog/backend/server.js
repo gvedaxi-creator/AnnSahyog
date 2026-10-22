@@ -122,6 +122,7 @@ app.post("/api/users/register", async (req, res) => {
   }
 
   try {
+    
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Start transaction

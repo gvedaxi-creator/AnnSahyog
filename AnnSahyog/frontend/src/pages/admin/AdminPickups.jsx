@@ -185,7 +185,7 @@ function AdminPickups() {
       <AdminSidebar />
 
       <main className="donor-main admin-main">
-        <div className="dashboard-page admin-dashboard-page">
+        <div className="dashboard-page admin-dashboard-page admin-pickups-page">
           <div className="container">
             <div className="page-back-bar">
               <BackButton />

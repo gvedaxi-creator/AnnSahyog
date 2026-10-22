@@ -387,7 +387,7 @@ function AddDonation() {
 
       <main className="donor-main">
         <div className="dashboard-page">
-          <div className="container" style={{ maxWidth: "860px" }}>
+          <div className="container">
             <div className="page-back-bar">
               <BackButton />
             </div>

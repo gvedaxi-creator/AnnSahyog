@@ -2,11 +2,11 @@ const API_BASE_URL = "http://localhost:5000/api";
 
 // Adds the login token (saved with the user at login) to every API call
 function authFetch(url, options = {}) {
-  let token = null;
+  let token;
   try {
     const user = JSON.parse(localStorage.getItem("user") || "null");
     token = user && user.token ? user.token : null;
-  } catch (e) {
+  } catch {
     token = null;
   }
   const headers = { ...(options.headers || {}) };
