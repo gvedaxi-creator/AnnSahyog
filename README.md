@@ -17,7 +17,7 @@
 
 AnnSahyog is a food redistribution and rescue network. It connects food donors (restaurants, households and events) with NGOs that need food, and with volunteers who collect and deliver it. Admins verify organisations and monitor every donation from listing to delivery.
 
-**Contents:** [Features](#features) · [Tech Stack](#tech-stack) · [Project Structure](#project-structure) · [Getting Started](#running-locally-without-docker) · [Docker](#running-with-docker) · [Testing](#testing)
+**Contents:** [Features](#features) · [Screenshots](#screenshots) · [Tech Stack](#tech-stack) · [Project Structure](#project-structure) · [Getting Started](#running-locally-without-docker) · [Docker](#running-with-docker) · [Testing](#testing)
 
 ## Features
 
@@ -29,6 +29,23 @@ AnnSahyog is a food redistribution and rescue network. It connects food donors (
 | **Admin** | Verify and manage NGOs, users and volunteers, oversee all donations and pickups, read feedback, and generate reports. |
 
 Every donation moves through the statuses `AVAILABLE → REQUESTED → ACCEPTED → PICKED_UP → DELIVERED` (or `CANCELLED`).
+
+## Screenshots
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/landing.png" alt="Landing page" /><br/><sub><b>Landing page</b></sub></td>
+    <td width="50%"><img src="docs/screenshots/donor-dashboard.png" alt="Donor dashboard" /><br/><sub><b>Donor dashboard</b></sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/donor-new-donation.png" alt="New donation form with map" /><br/><sub><b>Post a donation with a pickup location on the map</b></sub></td>
+    <td><img src="docs/screenshots/ngo-browse-food.png" alt="NGO browse available food" /><br/><sub><b>NGO: browse available food</b></sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/volunteer-tasks.png" alt="Volunteer rescue tasks" /><br/><sub><b>Volunteer: rescue tasks</b></sub></td>
+    <td><img src="docs/screenshots/admin-overview.png" alt="Admin platform overview" /><br/><sub><b>Admin: platform overview</b></sub></td>
+  </tr>
+</table>
 
 ## Tech Stack
 
