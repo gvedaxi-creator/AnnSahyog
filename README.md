@@ -17,7 +17,7 @@
 
 AnnSahyog is a food redistribution and rescue network. It connects food donors (restaurants, households and events) with NGOs that need food, and with volunteers who collect and deliver it. Admins verify organisations and monitor every donation from listing to delivery.
 
-**Contents:** [Features](#features) · [Screenshots](#screenshots) · [Tech Stack](#tech-stack) · [Project Structure](#project-structure) · [Getting Started](#running-locally-without-docker) · [Docker](#running-with-docker) · [Testing](#testing)
+**Contents:** [Features](#features) · [Screenshots](#screenshots) · [Tech Stack](#tech-stack) · [Why Docker and Testing](#why-docker-and-testing) · [Project Structure](#project-structure) · [Getting Started](#running-locally-without-docker) · [Docker](#running-with-docker) · [Testing](#testing)
 
 ## Features
 
@@ -53,6 +53,12 @@ Every donation moves through the statuses `AVAILABLE → REQUESTED → ACCEPTED 
 - **Backend:** Node.js, Express 5, mysql2, bcrypt, dotenv, cors
 - **Database:** MySQL 8
 - **Deployment:** Docker and Docker Compose
+
+## Why Docker and Testing
+
+**Docker** packages the database, backend and frontend so the app runs the same way on any computer. There's no need to install Node.js or MySQL by hand, and every developer or evaluator uses the same versions. A single command (`docker compose up --build`) starts everything. See [Running with Docker](#running-with-docker).
+
+**Testing** checks that the API keeps working after changes. The scripts in `testrun/` send real requests to the running backend. They cover registration and login, the donation workflow, and access control for protected pages. The results are saved to `testrun/results.md` and `testrun/results.json`, which support the test cases documented in the project report. See [Testing](#testing).
 
 ## Project Structure
 
