@@ -1,6 +1,23 @@
-# AnnSahyog
+<div align="center">
+
+<img src="docs/logo.png" alt="AnnSahyog logo" width="420" />
+
+### Connecting surplus food with the people who need it
+
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-22-339933?logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express-5-000000?logo=express&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
+
+</div>
+
+<p align="center"><img src="docs/hero.jpg" alt="Volunteers packing meals for distribution" /></p>
 
 AnnSahyog is a food redistribution and rescue network. It connects food donors (restaurants, households and events) with NGOs that need food, and with volunteers who collect and deliver it. Admins verify organisations and monitor every donation from listing to delivery.
+
+**Contents:** [Features](#features) · [Tech Stack](#tech-stack) · [Project Structure](#project-structure) · [Getting Started](#running-locally-without-docker) · [Docker](#running-with-docker) · [Testing](#testing)
 
 ## Features
 
