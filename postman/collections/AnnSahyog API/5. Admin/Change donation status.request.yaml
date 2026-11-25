@@ -1,0 +1,14 @@
+$kind: http-request
+description: "status: AVAILABLE, REQUESTED, ACCEPTED, PICKED_UP, DELIVERED or CANCELLED."
+url: "{{baseUrl}}/api/admin/donations/{{donationId}}/status"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{adminToken}}
+body:
+  type: json
+  content: |-
+    {
+      "status": "CANCELLED"
+    }
+order: 6000

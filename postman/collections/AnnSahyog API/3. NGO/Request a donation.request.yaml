@@ -1,0 +1,17 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/donation-requests"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{ngoToken}}
+body:
+  type: json
+  content: |-
+    {
+      "donation_id": {{donationId}},
+      "ngo_id": {{ngoId}},
+      "requested_quantity": 2,
+      "message": "Please reserve for our kitchen"
+    }
+order: 5000

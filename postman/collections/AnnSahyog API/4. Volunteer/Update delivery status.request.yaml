@@ -1,0 +1,15 @@
+$kind: http-request
+description: "status: PICKED_UP, IN_TRANSIT or DELIVERED."
+url: "{{baseUrl}}/api/volunteers/tasks/{{pickupId}}/status"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{volunteerToken}}
+body:
+  type: json
+  content: |-
+    {
+      "status": "PICKED_UP",
+      "notes": "Collected from donor"
+    }
+order: 9000

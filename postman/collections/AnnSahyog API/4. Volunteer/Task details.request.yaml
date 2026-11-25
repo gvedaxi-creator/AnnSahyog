@@ -1,0 +1,7 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/volunteers/tasks/{{pickupId}}"
+method: GET
+headers:
+  Authorization: Bearer {{volunteerToken}}
+order: 7000

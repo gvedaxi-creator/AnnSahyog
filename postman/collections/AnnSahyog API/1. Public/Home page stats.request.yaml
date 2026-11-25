@@ -1,0 +1,5 @@
+$kind: http-request
+description: Public counts for the home page.
+url: "{{baseUrl}}/api/public/home-stats"
+method: GET
+order: 11000

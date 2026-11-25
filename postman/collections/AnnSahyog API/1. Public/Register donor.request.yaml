@@ -1,0 +1,17 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/users/register"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Test Donor",
+      "email": "donor.test@example.com",
+      "password": "Test@1234",
+      "phone": "9876543210",
+      "role": "DONOR"
+    }
+order: 2000

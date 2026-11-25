@@ -1,0 +1,114 @@
+/* ======================================================
+   RESPONSIVE DATA TABLES (phones)
+   On screens 640px and narrower, each table row becomes a
+   stacked card. Each cell shows its column name from the
+   data-label attribute, then its value. Wider screens keep
+   the normal table, which scrolls inside its own container
+   if needed. Only the admin-table class is affected.
+====================================================== */
+
+@media (max-width: 640px) {
+  .admin-main .admin-table-wrapper,
+  .donor-main .admin-table-wrapper,
+  .ngo-main .admin-table-wrapper,
+  .vol-main .admin-table-wrapper {
+    overflow: visible;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .admin-main table.admin-table,
+  .donor-main table.admin-table,
+  .ngo-main table.admin-table,
+  .vol-main table.admin-table {
+    display: block;
+    width: 100%;
+    min-width: 0 !important;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .admin-main table.admin-table thead,
+  .donor-main table.admin-table thead,
+  .ngo-main table.admin-table thead,
+  .vol-main table.admin-table thead {
+    display: none;
+  }
+
+  .admin-main table.admin-table tbody,
+  .donor-main table.admin-table tbody,
+  .ngo-main table.admin-table tbody,
+  .vol-main table.admin-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-main table.admin-table tr,
+  .donor-main table.admin-table tr,
+  .ngo-main table.admin-table tr,
+  .vol-main table.admin-table tr {
+    display: block;
+    width: 100%;
+    margin: 0 0 0.75rem;
+    padding: 0.5rem 0.85rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    box-shadow: 0 1px 2px rgba(15, 31, 21, 0.06);
+  }
+
+  .admin-main table.admin-table td,
+  .donor-main table.admin-table td,
+  .ngo-main table.admin-table td,
+  .vol-main table.admin-table td {
+    display: grid;
+    grid-template-columns: minmax(0, 38%) minmax(0, 1fr);
+    gap: 0.6rem;
+    align-items: start;
+    width: 100%;
+    padding: 0.5rem 0;
+    border: 0;
+    border-bottom: 1px dashed var(--line);
+    text-align: left;
+    overflow-wrap: anywhere;
+    min-width: 0;
+  }
+
+  .admin-main table.admin-table td:last-child,
+  .donor-main table.admin-table td:last-child,
+  .ngo-main table.admin-table td:last-child,
+  .vol-main table.admin-table td:last-child {
+    border-bottom: 0;
+  }
+
+  /* Cells without a label (for example, a single action cell) span the card */
+  .admin-main table.admin-table td:not([data-label]),
+  .donor-main table.admin-table td:not([data-label]),
+  .ngo-main table.admin-table td:not([data-label]),
+  .vol-main table.admin-table td:not([data-label]) {
+    display: block;
+  }
+
+  .admin-main table.admin-table td[data-label]::before,
+  .donor-main table.admin-table td[data-label]::before,
+  .ngo-main table.admin-table td[data-label]::before,
+  .vol-main table.admin-table td[data-label]::before {
+    content: attr(data-label);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 0.15rem;
+  }
+
+  .admin-main table.admin-table td > *,
+  .donor-main table.admin-table td > *,
+  .ngo-main table.admin-table td > *,
+  .vol-main table.admin-table td > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+}

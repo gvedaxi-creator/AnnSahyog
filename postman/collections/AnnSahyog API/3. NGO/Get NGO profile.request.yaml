@@ -1,0 +1,7 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/ngos/{{ngoId}}/profile"
+method: GET
+headers:
+  Authorization: Bearer {{ngoToken}}
+order: 2000

@@ -1,0 +1,7 @@
+$kind: http-request
+description: ""
+url: "{{baseUrl}}/api/donors/{{donorId}}/profile"
+method: GET
+headers:
+  Authorization: Bearer {{donorToken}}
+order: 7000

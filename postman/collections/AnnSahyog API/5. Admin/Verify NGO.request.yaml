@@ -1,0 +1,14 @@
+$kind: http-request
+description: "verification_status: PENDING, ACTIVE, DEACTIVE or REJECTED."
+url: "{{baseUrl}}/api/admin/ngos/{{ngoId}}/verify"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{adminToken}}
+body:
+  type: json
+  content: |-
+    {
+      "verification_status": "ACTIVE"
+    }
+order: 12000
